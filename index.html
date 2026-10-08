@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova - Windows Voice Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-ambient glow-1"></div>
+    <div class="background-ambient glow-2"></div>
+
+    <div class="app-layout">
+        <!-- Top Navigation & Siri Orb Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <div class="orb-container" id="orbWrapper" title="Click to talk with Nova">
+                    <div class="orb-halo"></div>
+                    <div class="orb-visual" id="orbCore"></div>
+                </div>
+                <div class="title-meta">
+                    <div class="brand-title">
+                        <h2>NOVA</h2>
+                        <span class="badge-status online">Online</span>
+                    </div>
+                    <div class="live-status" id="statusLabel">Ready • Click mic or speak</div>
+                </div>
+            </div>
+
+            <!-- Waveform Animation -->
+            <div class="wave-visualizer" id="waveContainer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <div class="header-right">
+                <div class="status-pill" id="batteryBadge">
+                    <span class="icon">🔋</span>
+                    <span id="batteryText">Checking...</span>
+                </div>
+                <button class="nav-btn" id="notesBtn" title="Saved Notes">
+                    📝 <span class="btn-text">Notes</span>
+                </button>
+                <button class="nav-btn" id="settingsBtn" title="Voice Settings">
+                    ⚙️ <span class="btn-text">Settings</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- MAIN CONVERSATION AREA (Prominent & Fully Visible) -->
+        <main class="conversation-view" id="conversationView">
+            <div class="chat-stream" id="chatStream">
+                <!-- Welcome Assistant Message -->
+                <div class="message-row assistant-row">
+                    <div class="msg-avatar">✨</div>
+                    <div class="msg-bubble assistant-bubble">
+                        <div class="msg-header">
+                            <span class="sender-name">Nova</span>
+                            <span class="action-tag">System Ready</span>
+                        </div>
+                        <div class="msg-content">
+                            Hello! I am your Windows Voice Assistant. I can control system volume, check your battery, take screenshots, lock your PC, open applications, and search Google using AI.
+                        </div>
+                        <div class="sample-actions">
+                            <button class="sample-btn" data-cmd="What time is it?">⏰ What time is it?</button>
+                            <button class="sample-btn" data-cmd="Check battery">🔋 Battery status</button>
+                            <button class="sample-btn" data-cmd="Open Calculator">🧮 Open Calculator</button>
+                            <button class="sample-btn" data-cmd="Search Google for distance to Mars">🌐 Google Search AI</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Live Voice Transcript Floating Banner -->
+        <div class="transcript-banner" id="transcriptBanner">
+            <span class="pulse-dot"></span>
+            <span id="transcriptText">Listening to your voice...</span>
+        </div>
+
+        <!-- Quick Action Chips -->
+        <div class="quick-chips-wrapper">
+            <div class="quick-chips">
+                <button class="chip" data-cmd="Volume up">🔊 Volume Up</button>
+                <button class="chip" data-cmd="Volume down">🔉 Volume Down</button>
+                <button class="chip" data-cmd="Take a screenshot">📸 Screenshot</button>
+                <button class="chip" data-cmd="Lock my PC">🔒 Lock PC</button>
+                <button class="chip" data-cmd="Open Notepad">📝 Notepad</button>
+                <button class="chip" data-cmd="Open Task Manager">📊 Task Manager</button>
+                <button class="chip" data-cmd="Search Google for latest tech news">🌐 AI Google Search</button>
+                <button class="chip" data-cmd="Tell me a joke">😄 Joke</button>
+            </div>
+        </div>
+
+        <!-- Bottom Input Bar -->
+        <footer class="app-input-bar">
+            <div class="input-shell">
+                <input 
+                    type="text" 
+                    id="commandInput" 
+                    placeholder="Type a command or click the mic to speak..." 
+                    autocomplete="off"
+                >
+                <button class="send-action-btn" id="sendBtn" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+
+            <button class="mic-action-btn" id="micBtn" title="Click to speak (Voice Recognition)">
+                <svg class="mic-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                    <line x1="12" y1="19" x2="12" y2="23"></line>
+                    <line x1="8" y1="23" x2="16" y2="23"></line>
+                </svg>
+            </button>
+        </footer>
+    </div>
+
+    <!-- Notes Modal -->
+    <div class="modal-overlay" id="notesModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>📝 Saved Notes</h3>
+                <button class="modal-close-btn" id="closeNotesBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="notes-list" id="notesListContainer">
+                    <p class="empty-state">No notes saved yet. Say "Take a note [text]" to record one!</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" id="clearNotesBtn">Clear Notes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Settings Modal (NO API KEY REQUIRED) -->
+    <div class="modal-overlay" id="settingsModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h3>⚙️ Nova Voice Settings</h3>
+                <button class="modal-close-btn" id="closeSettingsBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-row">
+                    <div class="setting-info">
+                        <label>Speech Output</label>
+                        <small>Speak responses out loud using Windows text-to-speech</small>
+                    </div>
+                    <label class="switch">
+                        <input type="checkbox" id="voiceToggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+
+                <div class="setting-item">
+                    <label for="voiceSelect">Speech Synthesizer Voice</label>
+                    <select id="voiceSelect" class="styled-dropdown">
+                        <option value="">Default Windows Voice</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <label for="speechRate">Voice Speed: <span id="rateVal">1.0x</span></label>
+                    <input type="range" id="speechRate" min="0.7" max="1.4" step="0.1" value="1.0">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="saveSettingsBtn">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
