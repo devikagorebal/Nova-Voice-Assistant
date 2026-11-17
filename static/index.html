@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Suite - Mobile Companion Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="ambient-glow glow-blue"></div>
+    <div class="ambient-glow glow-purple"></div>
+
+    <div class="companion-container">
+        <header class="companion-header">
+            <div class="brand-box">
+                <div class="pulse-orb"></div>
+                <div>
+                    <h2>NOVA SUITE</h2>
+                    <span class="sub-text">Mobile & Web Companion (Part 29)</span>
+                </div>
+            </div>
+            <div class="status-badge" id="connStatus">Online</div>
+        </header>
+
+        <main class="companion-stream" id="chatStream">
+            <div class="msg assistant-msg">
+                <div class="avatar">⚡</div>
+                <div class="bubble">
+                    <strong>Nova:</strong> Mobile Companion Hub connected. Speak or type commands from any phone or browser on your local network.
+                </div>
+            </div>
+        </main>
+
+        <div class="quick-pills">
+            <button class="pill" data-cmd="What time is it?">⏰ Time</button>
+            <button class="pill" data-cmd="Check battery">🔋 Battery</button>
+            <button class="pill" data-cmd="Volume up">🔊 Vol +</button>
+            <button class="pill" data-cmd="Volume down">🔉 Vol -</button>
+            <button class="pill" data-cmd="Take a screenshot">📸 Screenshot</button>
+            <button class="pill" data-cmd="Lock my PC">🔒 Lock PC</button>
+        </div>
+
+        <footer class="companion-input-bar">
+            <input type="text" id="cmdInput" placeholder="Enter voice or text command..." autocomplete="off">
+            <button id="sendBtn">Send</button>
+            <button id="micBtn" class="mic-btn" title="Voice Input">🎤</button>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

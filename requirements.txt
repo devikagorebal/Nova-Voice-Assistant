@@ -1,0 +1,32 @@
+# Optional dependencies for Nova / Ultra Jarvis Suite
+# The application runs with pure standard Python + Tkinter + Pillow out of the box!
+# Install these only if you wish to enable advanced computer vision, offline voice models, etc.
+
+# Image processing & GUI previews (Already available on your system)
+pillow>=10.0.0
+
+# Optional Text-to-Speech (native SAPI5 PowerShell fallback is built-in)
+pyttsx3>=2.90
+
+# Optional Speech Recognition (Google Speech)
+SpeechRecognition>=3.10.0
+pyaudio>=0.2.13
+
+# Optional Offline Voice Recognition (TARANGA / Vosk model)
+vosk>=0.3.45
+sounddevice>=0.4.6
+
+# Optional Face Lock & Emotion Detection via Webcam
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Optional Encrypted Memory Vault (standard library fallback is built-in)
+cryptography>=41.0.0
+
+# Optional Extended Utilities
+requests>=2.31.0
+wikipedia>=1.4.0
+pywhatkit>=5.4
+pyjokes>=0.6.0
+pyautogui>=0.9.54
+psutil>=5.9.0

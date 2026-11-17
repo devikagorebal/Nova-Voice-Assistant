@@ -1,0 +1,28 @@
+{
+  "theme": "neon",
+  "language": "en",
+  "tts_enabled": true,
+  "telegram_chat_id": "",
+  "telegram_bot_token": "",
+  "telegram_bot_tokens": [],
+  "telegram_learned_cmds": {},
+  "face_lock_enabled": false,
+  "continuous_listen": false,
+  "user_name": null,
+  "recent_commands": [],
+  "gemini_api_key": null,
+  "notes": {},
+  "todo": [],
+  "ai_history": [],
+  "voice_index": 0,
+  "voice_personality": "normal",
+  "permissions": {
+    "system_power": true,
+    "file_ops": true,
+    "webcam": true,
+    "shell_cmd": true,
+    "network_requests": true,
+    "mobile_api": true
+  },
+  "telegram_bots": []
+}
